@@ -48,7 +48,9 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-     [self predicateDemo];
+    BOOL flag = [self isCharWithString:@"[A-Za-z]+"];
+    
+    NSLog(@" ----%d" , flag);
 
 }
 
@@ -70,7 +72,17 @@
     
 }
 
-
-
+#pragma 判断字符串首字母是否为字母
+- (BOOL)isCharWithString:(NSString *) str{
+    
+//    NSString *string = @"[Aw121233@]";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@" , str];
+    
+    if ([predicate evaluateWithObject:@"hu"]) {
+        
+        return  true;
+    }
+    return  false;
+}
 
 @end
